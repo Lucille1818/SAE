@@ -1,0 +1,43 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/vertx-core-5.0.8-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-http2-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/postgresql-42.7.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-resolver-dns-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.21.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.eclipse.persistence.jpa-4.0.9-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.eclipse.persistence.core-4.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.eclipse.persistence.jpa.jpql-4.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.eclipse.persistence.jpa-4.0.9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-auth-common-5.0.8-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-bridge-common-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-buffer-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-core-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-transport-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-web-5.0.8-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-http-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-common-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-resolver-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-web-common-5.0.8-javadoc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-handler-proxy-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.21.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-base-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-socks-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-core-logging-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-handler-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-auth-common-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/org.eclipse.persistence.asm-9.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-web-common-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-transport-native-unix-common-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-web-5.0.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jakarta.persistence-api-3.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/checker-qual-3.52.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/netty-codec-compression-4.2.10.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vertx-bridge-common-5.0.8-javadoc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

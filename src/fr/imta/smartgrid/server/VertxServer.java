@@ -48,9 +48,9 @@ public class VertxServer {
         // add methods to GridHandler to handle other grid related routes
 
         PersonHandler ph = new PersonHandler(db);
-        router.get("/persons").handler(ph::getPersons);
-        router.get("/person/:id").handler(ph::getById);
-        //router.post("/person/:id").handler(ph::create)
+        router.get("/api/person").handler(ph::getPersons);
+        router.get("/api/person/:id").handler(ph::getById);
+        router.post("/person/:id").handler(ph::create);
         //router.put("/person/:id").handler(ph::update)
         //router.delete("/person/:id").handler(ph::delete)
 

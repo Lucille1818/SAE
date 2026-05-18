@@ -1,6 +1,7 @@
 package fr.imta.smartgrid.server.handlers;
 
 import java.util.List;
+import java.util.Scanner;
 
 import fr.imta.smartgrid.model.Grid;
 import fr.imta.smartgrid.model.Person;
@@ -27,5 +28,24 @@ public class PersonHandler {
         else {
             ctx.json(p.toJSON());
         }
+    }
+
+    public void create(RoutingContext ctx){
+        Person p = new Person();
+        Scanner firstnameScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter firstname");
+        String firstname = firstnameScanner.nextLine();  // Read user input
+
+        p.setFirstName(firstname);
+
+        Scanner lastnameScanner = new Scanner(System.in);  // Create a Scanner object
+        System.out.println("Enter lastname");
+
+        String lastname = lastnameScanner.nextLine();  // Read user
+        p.setLastName(lastname);
+
+        Integer new_id = 1 + db.createQuery("SELECT MAX(p.id) FROM Person AS p",Integer.class).getSingleResult();
+
+
     }
 }
