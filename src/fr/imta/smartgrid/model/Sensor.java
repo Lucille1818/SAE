@@ -41,8 +41,23 @@ public abstract class Sensor {
     public JsonObject toJSON() {
         JsonObject res = new JsonObject();
 
-    //TODO
+        res.put("id", this.getId());
+        res.put("name", this.getName());
+        res.put("description", this.getDescription());
+        res.put("grid", this.getGrid() != null ? this.getGrid().getId() : null);
 
+        List<Integer> ownerIds = new ArrayList<>();
+        for (Person p : this.getOwners()) {
+            ownerIds.add(p.getId());
+        }
+        res.put("owners", ownerIds);
+
+        List<Integer> measurementIds = new ArrayList<>();
+        for (Measurement m : this.getMeasurements()) {
+            measurementIds.add(m.getId());
+        }
+        res.put("measurements", measurementIds);
+        
         return res;
     }
 
@@ -93,13 +108,5 @@ public abstract class Sensor {
     public void setMeasurements(List<Measurement> measurements) {
         this.measurements = measurements;
     }
-
-    //public JsonObject toJSON() {
-    //    JsonObject result = new JsonObject();
-
-    //    result.put("id", this.getId());
-
-    //}
-
     
 }

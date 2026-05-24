@@ -5,8 +5,10 @@ import java.util.Map;
 import org.eclipse.persistence.logging.SessionLog;
 
 import fr.imta.smartgrid.model.Measurement;
+import fr.imta.smartgrid.model.Producer;
 import fr.imta.smartgrid.server.handlers.GridHandler;
 import fr.imta.smartgrid.server.handlers.PersonHandler;
+import fr.imta.smartgrid.server.handlers.ProducerHandler;
 import fr.imta.smartgrid.server.handlers.MeasurementHandler;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpMethod;
@@ -50,7 +52,11 @@ public class VertxServer {
         PersonHandler ph = new PersonHandler(db);
         router.get("/persons").handler(ph::getPersons);
         router.get("/person/:id").handler(ph::getById);
+<<<<<<< Updated upstream
         //router.post("/person/:id").handler(ph::create)
+=======
+        //router.post("/person/:id").handler(ph::create);
+>>>>>>> Stashed changes
         //router.put("/person/:id").handler(ph::update)
         //router.delete("/person/:id").handler(ph::delete)
 
@@ -61,6 +67,10 @@ public class VertxServer {
         MeasurementHandler mh = new MeasurementHandler(db);
         router.get("/measurement").handler(mh::getMeasurements);
         router.get("/measurement/:id").handler(mh::getById);
+
+        //ProducerHandler prh = new ProducerHandler(db);
+        //router.get("/producer").handler(prh::getProducers);
+        //router.get("/producer/:id").handler(prh::getById);
 
         
         // start the server

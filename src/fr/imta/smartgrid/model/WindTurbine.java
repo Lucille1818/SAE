@@ -25,4 +25,12 @@ public class WindTurbine extends Producer {
         this.bladeLength = bladeLength;
     }
 
+    @Override
+    public JsonObject toJSON() {
+        JsonObject res = super.toJSON();
+        res.put("height", this.getHeight());
+        res.put("bladeLength", this.getBladeLength());
+        return res;
+    }
+
 }
