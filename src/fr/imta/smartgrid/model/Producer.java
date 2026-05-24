@@ -6,6 +6,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
+/**
+Classe représentant un producteur d'énergie.
+Hérite de Sensor et est elle-même héritée par WindTurbine et SolarPanel.
+Ajoute le champ powerSource qui indique la source d'énergie du producteur.
+ */
+
 @Entity
 @Table(name = "producer")
 @PrimaryKeyJoinColumn(name = "id")

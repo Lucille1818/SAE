@@ -15,6 +15,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.FetchType;
 
+/**
+Représente une mesure associée à un capteur.
+Une mesure a un nom (ex: "speed", "power") et une unité (ex: "km/h", "W").
+Elle contient une liste de points de données (DataPoint) représentant les valeurs enregistrées au fil du temps.
+ */
+
 @Entity
 @Table(name = "measurement")
 public class Measurement {
@@ -26,10 +32,12 @@ public class Measurement {
 
     private String name;
 
+    // Capteur auquel cette mesure est rattachée
     @ManyToOne
     @JoinColumn(name = "sensor")
     private Sensor sensor;
 
+    // Liste des points de données, chargée immédiatement (EAGER)
     @OneToMany(mappedBy = "measurement", fetch = FetchType.EAGER)
     private List<DataPoint> datapoints = new ArrayList<>();
 
@@ -73,6 +81,10 @@ public class Measurement {
         this.datapoints = datapoints;
     }
 
+    /**
+    Retourne les données de la mesure au format JSON.
+    Inclut l'id, l'unité, le nom et la liste des ids des datapoints associés.
+     */
     public JsonObject toJSON() {
         JsonObject result = new JsonObject();
         result.put("id", this.getId());

@@ -15,6 +15,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+Représente une personne utilisatrice de la grille.
+Une personne est associée à une grille et peut posséder plusieurs capteurs.
+ */
+
 @Entity
 @Table(name = "person")
 public class Person {
@@ -25,10 +30,12 @@ public class Person {
     private String firstName;
     private String lastName;
 
+    // Grille à laquelle cette personne appartient
     @ManyToOne
     @JoinColumn(name = "grid")
     private Grid grid;
 
+    // Capteurs possédés par cette personne (relation many-to-many via table person_sensor)
     @ManyToMany
     @JoinTable(
             name = "person_sensor", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "sensor_id"))
@@ -73,6 +80,11 @@ public class Person {
     public void setSensors(List<Sensor> sensors) {
         this.sensors = sensors;
     }
+
+    /**
+    Retourne les données de la personne au format JSON.
+    Inclut l'id, le prénom, le nom, la grille associée et la liste des ids des capteurs possédés.
+     */
 
     public JsonObject toJSON() {
         JsonObject result = new JsonObject();

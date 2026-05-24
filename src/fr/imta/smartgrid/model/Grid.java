@@ -12,6 +12,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+Représente une grille électrique intelligente.
+Une grille regroupe des personnes et des capteurs (producteurs et consommateurs).
+ */
+
 @Entity
 @Table(name = "grid")
 public class Grid {
@@ -23,9 +28,11 @@ public class Grid {
 
     private String description;
 
+    // Personnes rattachées à cette grille
     @OneToMany(mappedBy = "grid")
     private List<Person> persons = new ArrayList<>();
 
+     // Capteurs rattachés à cette grille
     @OneToMany(mappedBy = "grid")
     private List<Sensor> sensors = new ArrayList<>();
 
@@ -70,6 +77,10 @@ public class Grid {
     }
 
 
+    /**
+    Retourne les données de la grille au format JSON.
+    Inclut l'id, le nom, la description, la liste des ids des personnes et la liste des ids des capteurs associés.
+     */
     public JsonObject toJSON() {
         JsonObject result = new JsonObject();
 
