@@ -36,7 +36,7 @@ public class ProducerHandler {
      */
 
     public void getProducers(RoutingContext ctx) {
-        List <Integer> producerIds = db.createQuery("SELECT pr.id from Person as pr").getResultList();
+        List <Integer> producerIds = db.createQuery("SELECT pr.id from Person as pr", Integer.class).getResultList();
         ctx.json(producerIds);
     }
 
@@ -94,6 +94,10 @@ public class ProducerHandler {
         }
         int sensorId  = body.getInteger("sensorId");
         double value  = body.getDouble("value");
+        if (sensorId == 0 || value == 0) {
+            ctx.response().setStatusCode(400).end("Champs 'sensorId' et 'value' obligatoires");
+            return;
+        }
         // Si le timestamp n'est pas fourni, on utilise l'heure actuelle en secondes
         long timestamp = body.getLong("timestamp",  System.currentTimeMillis() / 1000);
 

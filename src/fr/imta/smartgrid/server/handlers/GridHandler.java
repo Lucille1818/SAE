@@ -50,5 +50,34 @@ public class GridHandler {
             ctx.json(g.toJSON());
         }
     }
+
+    /**
+    public void getProduction(RoutingContext ctx) {
+    int id = Integer.parseInt(ctx.pathParam("id"));
+
+    Grid g = db.find(Grid.class, id);
+    if (g == null) {
+        ctx.response()
+           .setStatusCode(404)
+           .end("\"Grid not found\"");
+        return;
+    }
+
+    Number result = (Number) db.createNativeQuery(
+        "SELECT COALESCE(SUM(m.value), 0) " +
+        "FROM measure m " +
+        "JOIN sensor s ON m.sensor_id = s.id " +
+        "JOIN grid_sensor gs ON gs.sensor_id = s.id " +
+        "WHERE gs.grid_id = :gridId"
+    )
+    .setParameter("gridId", id)
+    .getSingleResult();
+
+    ctx.response()
+       .setStatusCode(200)
+       .putHeader("Content-Type", "application/json")
+       .end(result.toString());
+    }
+    */
     
 }

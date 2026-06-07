@@ -52,4 +52,61 @@ public class PersonHandler {
             ctx.json(p.toJSON());
         }
     }
+
+
+    /**
+    DELETE /person/:id
+    Supprime une personne à partir de son ID.
+    Répond :
+    - 200 si suppression réussie
+    - 404 si personne introuvable
+    - 500 en cas d'erreur serveur
+     */
+
+    public void delete(RoutingContext ctx) {
+
+        try {
+
+            int id = Integer.parseInt(ctx.pathParam("id"));
+
+            // Recherche de la personne
+            Person p = db.find(Person.class, id);
+
+            // Vérifie si la personne existe
+            if (p == null) {
+
+                ctx.response()
+                   .setStatusCode(404)
+                   .end("Person not found");
+
+                return;
+            }
+
+            // Début transaction
+            db.getTransaction().begin();
+
+            // Suppression
+            db.remove(p);
+
+            // Validation transaction
+            db.getTransaction().commit();
+
+            // Réponse succès
+            ctx.response()
+               .setStatusCode(200)
+               .end("Deleted successfully");
+
+        }
+        catch (Exception e) {
+
+            // Annule la transaction si erreur
+            if (db.getTransaction().isActive()) {
+                db.getTransaction().rollback();
+            }
+
+            ctx.response()
+               .setStatusCode(500)
+               .end("Error during deletion");
+        }
+    }
 }

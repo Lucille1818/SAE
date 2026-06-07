@@ -79,5 +79,29 @@ public class SensorHandler {
         // Retourne le capteur mis à jour
         ctx.json(s.toJSON());
     }
+
+    /**
+    GET /consumer
+    Retourne la liste des IDs de tous les consommateurs présents en base via la requête JPQL : SELECT c.id FROM Consumer as c
+     */
+    public void getConsumers(RoutingContext ctx) {
+        List <Integer> consumerIds = db.createQuery("SELECT c.id from Consumer as c").getResultList();
+        ctx.json(consumerIds);
+    }
+
+    /**
+     GET /producer
+     Retourne la liste des IDs de tous les producteurs.
+     */
+
+    public void getProducers(RoutingContext ctx) {
+        List <Integer> producerIds = db.createQuery("SELECT pr.id from Person as pr", Integer.class).getResultList();
+        ctx.json(producerIds);
+    }
+
+
+    
     
 }
+
+

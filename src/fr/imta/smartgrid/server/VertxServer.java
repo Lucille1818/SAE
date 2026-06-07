@@ -62,6 +62,7 @@ public class VertxServer {
         router.get("/grid/:id").handler(gh::getById);
         // => détail d'une grille par ID
         // add methods to GridHandler to handle other grid related routes
+        //router.get("/grid/:id/production").handler(gh::getProduction);
 
         PersonHandler ph = new PersonHandler(db);
         router.get("/persons").handler(ph::getPersons);
@@ -70,7 +71,7 @@ public class VertxServer {
         // => détail d'une personne par ID
         //router.post("/person/:id").handler(ph::create);
         //router.put("/person/:id").handler(ph::update)
-        //router.delete("/person/:id").handler(ph::delete)
+        router.delete("/person/:id").handler(ph::delete);
         // => à implementer dans personhandler
 
         // same as GridHandler
@@ -85,21 +86,12 @@ public class VertxServer {
         router.get("/measurement/:id/values").handler(mh::getValues);
         // => datapoints d'une mesure
 
-        ProducerHandler prh = new ProducerHandler(db);
-        router.get("/producer").handler(prh::getProducers);
-        // => liste les producteurs
-        router.get("/producer/:id").handler(prh::getById);
-        // => détail d'un producteur
-        router.post("/ingress/windturbine").handler(prh::ingressWindTurbine);
+        IngressHandler ih = new IngressHandler(db);
+        //router.post("/ingress/windturbine").handler(ih::ingressWindTurbine);
         // => reçoit une mesure d'éolienne
-        router.post("/ingress/solarpanel").handler(prh::ingressSolarPanel);
+        router.post("/ingress/solarpanel").handler(ih::ingressSolarPanel);
         // => reçoit une mesure de panneau solaire
-
-        ConsumerHandler ch = new ConsumerHandler(db);
-        router.get("/consumer").handler(ch::getConsumers);
-        // => liste les consommateurs
-        router.get("/consumer/:id").handler(ch::getById);
-        // => détail d'un consommateur
+    
 
         SensorHandler sh = new SensorHandler(db);
         router.get("/sensor").handler(sh::getSensors);
@@ -108,6 +100,8 @@ public class VertxServer {
         // => détail d'un capteur
         router.post("/sensor/:id").handler(sh::update);
         // => mise à jour nom/description d'un capteur 
+        router.get("/consumers").handler(sh::getConsumers);
+        router.get("/producers").handler(sh::getProducers);
 
         
         // start the server => Démarrage du serveur sur le port 8080
